@@ -5,6 +5,11 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <hr />
+      email: <%= @user.email %><br />
+      created: <%= @user.created_at %><br />
+      updated: <%= @user.updated_at %><br />
+      admin: <%= @user.admin ? :yes.to_s.capitalize : :no.to_s.capitalize %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
