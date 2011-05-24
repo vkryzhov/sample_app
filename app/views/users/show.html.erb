@@ -9,11 +9,21 @@
       email: <%= @user.email %><br />
       created: <%= @user.created_at %><br />
       updated: <%= @user.updated_at %><br />
-      admin: <%= @user.admin ? :yes.to_s.capitalize : :no.to_s.capitalize %>
+      admin: <%= @user.admin ? :yes.to_s.capitalize : :no.to_s.capitalize %><br />
+      
+      <% unless @user.microposts.empty? %>
+        <br />
+        <strong>Microposts:</strong>
+        <table class="microposts" summary="User microposts">
+          <%= render @microposts %>
+        </table>
+        <%= will_paginate @microposts %>
+      <% end %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+      <strong>Microposts</strong> <%= @user.microposts.count %>
     </td>
   </tr>
 </table>
